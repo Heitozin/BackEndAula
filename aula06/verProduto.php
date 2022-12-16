@@ -12,11 +12,12 @@
 
  include_once('dados-produtos.php');
 
- $id = @$_GET['id'];
+ 
+ //$id = @$_GET['id'];
+ echo "<h2>Vitrine de produtos</h2>";
 
 foreach ($dados_produtos as $usuario) {
-    if ($usuario["id"] == $id) {
-        echo "<h2>Vitrine de produtos</h2>";
+    if ($usuario) {
         echo "<p>ID: ".$usuario["id"]."</p>";
         echo "<p>TITLE: ".$usuario["title"]."</p>";
         echo "<p>PRICE: ".$usuario["price"]."</p>";
