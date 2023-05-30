@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+</head>
+<body>
+
+    <form action="cadastro.php" method="POST" onsubmit="return valida_dado(this)">
+        <input type="text" name="nome" size="20">
+        <input type="text" name="email" size="20">
+        <select name="estado" size="1">
+            <option> Escolha aqui</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+        </select>
+        <input type="text" name="login">
+        <input type="text" name="senha">
+        <input type="text" name="confirmacao">
+    </form>
+
+    <script>
+        function valida_dado(nomeform) {
+            if(nomeform.nome.value == "") {
+                alert("Por favor, digite um nome!")
+                return false;
+            }
+            if(nomeform.email.value == "" || nomeform.email.value.indexOf("@", 0) == -1 || nomeform.email.value.indexOf(".", 0) == -1) {
+                alert("E-mail inválido.");
+                return false;
+            }
+            if(nomeform.estado.selectedIndex == 0) {
+                alert("Por favor, selecione o estado.")
+                return false;
+            }
+            if(nomeform.login.value.length < 5 || nomeform.login.value.legnth > 15) {
+                alert("O login deve conter entre 5 e 15 caracteres.");
+                return false;
+            }
+            if(nomeform.login.value.indexOf(" ", 0) != -1) {
+                alert("O login não pode conter espaçoes em branco.");
+                return false;
+            }
+            if(nomeform.senha.value.length < 5 || nomeform.senha.value.legnth > 15) {
+                alert("O senha deve conter entre 5 e 15 caracteres.");
+                return false;
+            }
+            if(nomeform.senha.value.indexOf(" ", 0) != -1) {
+                alert("O senha não pode conter espaçoes em branco.");
+                return false;
+            }
+            if(nomeform.senha.value != nome.confirmacao.value) {
+                alert("Senhas não conferem. Você digitou as senhar diferentes");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    
+</body>
+</html>
